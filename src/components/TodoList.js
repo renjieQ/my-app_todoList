@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Todo from './Todo';
-import TodoForm from './TodoForm';
+import React, { useState } from "react";
+import Todo from "./Todo";
+import TodoForm from "./TodoForm";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
-  const addTodo = todo => {
+  const addTodo = (todo) => {
     if (!todo.text || /^\s*$/.test(todo.test)) {
       return;
     }
@@ -17,16 +17,18 @@ function TodoList() {
     if (!newValue.text || /^\s*$/.test(newValue.test)) {
       return;
     }
-    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
+    setTodos((prev) =>
+      prev.map((item) => (item.id === todoId ? newValue : item))
+    );
   };
 
-  const removeTodo = id => {
-    const removeArr = [...todos].filter(todo => todo.id !== id);
+  const removeTodo = (id) => {
+    const removeArr = [...todos].filter((todo) => todo.id !== id);
     setTodos(removeArr);
   };
 
-  const completeTodo = id => {
-    let updatedTodos = todos.map(todo => {
+  const completeTodo = (id) => {
+    let updatedTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.isComplete = !todo.isComplete;
       }
@@ -50,5 +52,3 @@ function TodoList() {
 }
 
 export default TodoList;
-
-test for idea commit
