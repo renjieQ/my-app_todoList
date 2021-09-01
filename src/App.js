@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Form from "./components/Form";
-import Todo from "./components/Todo";
 import TodoList from "./components/TodoList";
 
 const App = () => {
@@ -20,7 +19,6 @@ const App = () => {
         setInputText={setInputText}
       />
       <TodoList todos={todos} />
-      <Todo />
     </div>
   );
 };
