@@ -5,7 +5,7 @@ const Form = () => {
     <form>
       <input type="text" className="todo-input" />
       <button className="todo-button" type="submit">
-        <i className="fas fa-plus-square">i am form</i>
+        <i className="fas fa-plus-square"> i am form</i>
       </button>
       <div className="select">
         <select name="todos" className="filter-todo">
