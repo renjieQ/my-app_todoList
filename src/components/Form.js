@@ -5,6 +5,11 @@ const Form = ({ inputText, setInputText }) => {
     setInputText(e.target.value);
   };
 
+  const handleSubmitTodo = (e) => {
+    e.preventDefault();
+    setInputText("");
+  };
+
   return (
     <form>
       <input
@@ -13,7 +18,7 @@ const Form = ({ inputText, setInputText }) => {
         type="text"
         className="todo-input"
       />
-      <button className="todo-button" type="submit">
+      <button onClick={handleSubmitTodo} className="todo-button" type="submit">
         <i className="fas fa-plus-square"> i am Form</i>
       </button>
       <div className="select">
