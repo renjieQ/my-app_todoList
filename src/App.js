@@ -5,13 +5,19 @@ import TodoList from "./components/TodoList";
 
 const App = () => {
   const [inputText, setInputText] = React.useState("");
+  const [todos, setTodos] = React.useState([]);
 
   return (
     <div className="App">
       <header>
         <h1>Let's do Todo List</h1>
       </header>
-      <Form inputText={inputText} setInputText={setInputText} />
+      <Form
+        todos={todos}
+        setTodos={setTodos}
+        inputText={inputText}
+        setInputText={setInputText}
+      />
       <TodoList />
     </div>
   );
