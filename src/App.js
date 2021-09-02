@@ -6,6 +6,26 @@ import TodoList from "./components/TodoList";
 const App = () => {
   const [inputText, setInputText] = React.useState("");
   const [todos, setTodos] = React.useState([]);
+  const [status, setStatus] = React.useState("all");
+  const [filteredTodos, setFilteredTodos] = React.useState([]);
+
+  React.useEffect(() => {
+    const handleFilter = () => {
+      switch (status) {
+        case "completed":
+          setFilteredTodos(todos.filter((todo) => todo.completed === true));
+          break;
+        case "uncomplete":
+          setFilteredTodos(todos.filter((todo) => todo.completed === false));
+          break;
+        default:
+          setFilteredTodos(todos);
+          break;
+      }
+    };
+
+    handleFilter();
+  }, [status, todos]);
 
   return (
     <div className="App">
@@ -17,8 +37,13 @@ const App = () => {
         setTodos={setTodos}
         inputText={inputText}
         setInputText={setInputText}
+        setStatus={setStatus}
       />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+        filteredTodos={filteredTodos}
+      />
     </div>
   );
 };
