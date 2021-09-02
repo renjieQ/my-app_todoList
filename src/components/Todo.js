@@ -1,27 +1,24 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { deleTodo, setCheck } from "../features/todoSlice";
 
-const Todo = ({ text, setTodos, todos, todo }) => {
+const Todo = ({ completed, id, name }) => {
+  const dispatch = useDispatch();
+  const handleCheck = () => {
+    dispatch(setCheck(id));
+  };
   const handleDele = () => {
-    setTodos(todos.filter((el) => el.id !== todo.id));
+    dispatch(deleTodo(id));
   };
 
-  const handleComplete = () => {
-    setTodos(
-      todos.map((item) => {
-        if (item.id === todo.id) {
-          return { ...item, completed: !item.completed };
-        }
-        return item;
-      })
-    );
-  };
+  // const handleDele = () => {
+  //   setTodos(todos.filter((el) => el.id !== todo.id));
+  // };
 
   return (
     <div className="todo">
-      <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
-        {text}
-      </li>
-      <button onClick={handleComplete} className="complete-btn">
+      <li className={`todo-item ${completed ? "completed" : ""}`}>{name}</li>
+      <button onClick={handleCheck} className="complete-btn">
         <i className="fas fa-check"></i>
       </button>
       <button onClick={handleDele} className="trash-btn">

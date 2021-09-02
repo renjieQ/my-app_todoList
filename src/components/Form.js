@@ -1,10 +1,36 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { saveTodo } from "../features/todoSlice";
 
 const Form = () => {
+  const [input, setInput] = React.useState("");
+  const dispatch = useDispatch();
+
+  const handleSubmitTodo = (e) => {
+    e.preventDefault();
+    if (input) {
+      dispatch(
+        saveTodo({
+          item: input,
+          completed: false,
+          id: Date.now(),
+          // id: Math.random() * 1000,
+        })
+      );
+    }
+    return;
+  };
+
   return (
     <form>
-      <input type="text" className="todo-input" />
-      <button className="todo-button" type="submit">
+      <input
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+        type="text"
+        className="todo-input"
+      />
+      <button onClick={handleSubmitTodo} className="todo-button" type="submit">
         <i className="fas fa-plus-square"> i am Form</i>
       </button>
       <div className="select">

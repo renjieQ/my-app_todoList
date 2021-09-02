@@ -1,5 +1,6 @@
 npx create-react-app my-app
 npm install redux react-redux
+yarn add @reduxjs/toolkit
 
 # Getting Started with Create React App
 
