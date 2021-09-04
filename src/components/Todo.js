@@ -11,10 +11,6 @@ const Todo = ({ completed, id, name }) => {
     dispatch(deleTodo(id));
   };
 
-  // const handleDele = () => {
-  //   setTodos(todos.filter((el) => el.id !== todo.id));
-  // };
-
   return (
     <div className="todo">
       <li className={`todo-item ${completed ? "completed" : ""}`}>{name}</li>
